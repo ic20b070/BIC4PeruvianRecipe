@@ -16,6 +16,7 @@ All routes that are needed are implemented:
  * **POST** ```/ingredient``` &rarr; Stores new ingredients
  * **GET** ```/ingredient/{slug}``` &rarr; Show ingredient
  * **PUT** ```/ingredient/{slug}``` &rarr; Update ingredient
+ * **DELETE** ```/ingredient/{slug}``` &rarr; Delete ingredient
  * **GET** ```/ingredient/{slug}/edit``` &rarr; Edit ingredient
  * **GET** ```/search/ingredient``` &rarr; Search ingredients
  * **POST** ```/search/ingredient``` &rarr; Query ingredients
@@ -24,6 +25,7 @@ All routes that are needed are implemented:
  * **POST** ```/recipe``` &rarr; Stores new recipe
  * **GET** ```/recipe/{slug}``` &rarr; Show recipe
  * **PUT** ```/recipe/{slug}``` &rarr; Update recipe
+ * **DELETE** ```/recipe/{slug}``` &rarr; DELETE recipe
  * **GET** ```/recipe/{slug}/edit``` &rarr; Edit recipe
 
 All views can be found in ```/resources/views```.
@@ -32,8 +34,8 @@ All views can be found in ```/resources/views```.
 
 #### VueJS
 
-Implement your [VueJS](https://vue.js) components in the folder ```/resources/views/js/components```.
-Register your components in ```/resources/views/js/app.js``` and use them in the following files:
+Implement your [VueJS](https://vue.js) components in the folder ```/resources/js/components```.
+Register your components in ```/resources/js/app.js``` and use them in the following files:
 
  * ```/resources/views/recipe```
      * ```/resources/views/recipe/create.blade.php```
