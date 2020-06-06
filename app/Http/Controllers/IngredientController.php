@@ -24,9 +24,9 @@ class IngredientController extends Controller
      */
     public function index()
     {
-        $ingredient = Ingredient::all()->load('recipe');
+        $ingredients = Ingredient::all()->load('recipe');
 
-        return view('ingredient.index', compact('ingredient'));
+        return view('ingredient.index', compact('ingredients'));
     }
 
     /**

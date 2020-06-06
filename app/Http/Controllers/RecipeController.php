@@ -24,9 +24,9 @@ class RecipeController extends Controller
      */
     public function index()
     {
-        $recipe = Recipe::all()->load('ingredients');
+        $recipes = Recipe::all()->load('ingredients');
 
-        return view('recipe.index', compact('recipe'));
+        return view('recipe.index', compact('recipes'));
     }
 
     /**
