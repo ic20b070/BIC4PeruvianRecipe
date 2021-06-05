@@ -9,6 +9,7 @@
                 <th>Unit</th>
                 <th width="6%">Quantity</th>
                 <th width="6%">Recipe Name</th>
+                <th width="6%">Delete</th>
             </tr>
             </thead>
             <tbody>
@@ -19,7 +20,10 @@
                 <th>{{ingredient.unit}}</th>
                 <th>{{ingredient.quantity}}</th>
                 <th v-if="!loading">
-                    <button style = "background: #FF5100FF" class= "card-header-title" type="button" v-on:click.stop.prevent="openRecipeList(ingredient.recipe_id)">{{recipes[ingredient.recipe_id-1].name}}</button>
+                    <button style = "background: #FF5100FF" type="button" v-on:click.stop.prevent="openRecipeList(ingredient.recipe_id)">{{recipes[ingredient.recipe_id-1].name}}</button>
+                </th>
+                <th>
+                    <button style = "background: #FF5100FF" type="button" v-on:click.stop.prevent="deleteIngredient(ingredient.id)">Remove</button>
                 </th>
             </tr>
             </tbody>
@@ -46,7 +50,7 @@ export default {
                 description: '',
                 creationDate: '',
                 quantity: '',
-                //slug: '',
+                slug: '',
                 recipeId: '',
                 updateDate: ''
             },
@@ -78,7 +82,7 @@ export default {
             this.ingredient.description = value.description;
             this.ingredient.creationDate = value.created_at;
             this.ingredient.quantity = value.quantity;
-            //this.ingredient.slug = value.slug;
+            this.ingredient.slug = value.slug;
             this.ingredient.recipeId = value.recipe_id;
             this.ingredient.updateDate = value.updated_at;
             console.log(this.ingredient.name);
@@ -92,7 +96,12 @@ export default {
         openRecipeList(receptReference) {
             this.ingredient.recipeId = receptReference
             window.location = './recipe#'+this.ingredient.recipeId;
+        },
+        deleteIngredient(id) {
+            this.axios.delete("http://127.0.0.1:8000/ingredient" + id)
+                .catch(e => console.log(e));
         }
+
     }
 
 }
