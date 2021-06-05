@@ -2072,7 +2072,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 var form = new Form({
   'slug': '',
   'name': '',
@@ -2132,18 +2131,6 @@ var form = new Form({
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -2291,13 +2278,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "SearchIngredientComponent",
@@ -2367,9 +2347,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
 //
 //
 //
@@ -22313,8 +22290,6 @@ var render = function() {
               ? _c(
                   "div",
                   [
-                    _c("div", { staticClass: "field" }),
-                    _vm._v(" "),
                     _c("label", { staticClass: "label" }, [_vm._v("Results")]),
                     _vm._v(" "),
                     _vm._l(_vm.results, function(result) {
@@ -22431,9 +22406,6 @@ var render = function() {
               key: ingredient.id,
               staticClass: "hover",
               on: {
-                load: function($event) {
-                  return _vm.mapRecipeIdToName(12)
-                },
                 click: function($event) {
                   $event.stopPropagation()
                   $event.preventDefault()
@@ -22465,36 +22437,14 @@ var render = function() {
                           click: function($event) {
                             $event.stopPropagation()
                             $event.preventDefault()
-                            return _vm.openRecipeList(ingredient.recipe_id)
+                            return _vm.deleteIngredient(ingredient)
                           }
                         }
                       },
-                      [
-                        _vm._v(
-                          _vm._s(_vm.recipes[ingredient.recipe_id - 1].name)
-                        )
-                      ]
+                      [_vm._v("Remove")]
                     )
                   ])
-                : _vm._e(),
-              _vm._v(" "),
-              _c("th", [
-                _c(
-                  "button",
-                  {
-                    staticStyle: { background: "#FF5100FF" },
-                    attrs: { type: "button" },
-                    on: {
-                      click: function($event) {
-                        $event.stopPropagation()
-                        $event.preventDefault()
-                        return _vm.deleteIngredient(ingredient)
-                      }
-                    }
-                  },
-                  [_vm._v("Remove")]
-                )
-              ])
+                : _vm._e()
             ]
           )
         }),
@@ -22542,8 +22492,6 @@ var staticRenderFns = [
         _c("th", [_vm._v("Unit")]),
         _vm._v(" "),
         _c("th", { attrs: { width: "6%" } }, [_vm._v("Quantity")]),
-        _vm._v(" "),
-        _c("th", { attrs: { width: "6%" } }, [_vm._v("Recipe Name")]),
         _vm._v(" "),
         _c("th", { attrs: { width: "6%" } }, [_vm._v("Delete")])
       ])

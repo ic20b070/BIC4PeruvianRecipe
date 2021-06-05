@@ -16,13 +16,6 @@
                             </div>
                         </div>
                         <div v-if="results.length > 0 && q ">
-                            <div class="field">
-                                <!--<label class="label">Number of hits</label>
-                                <div class="control">
-                                    <input class="input" type="text" placeholder="Search" v-model="results.length"
-                                           disabled>
-                                </div>/>-->
-                            </div>
                             <label class="label">Results</label>
                             <div class="control" v-for="result in results">
                                 <div class="field is-grouped">
