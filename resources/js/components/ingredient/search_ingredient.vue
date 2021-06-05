@@ -16,7 +16,7 @@
                             </div>
                         </div>
                         <div v-if="results.length > 0 && q ">
-                            <label class="label">Results</label>
+                            <label class="label">Output</label>
                             <div class="control" v-for="result in results">
                                 <div class="field is-grouped">
                                     <p class="control is-expanded">
@@ -31,7 +31,7 @@
                                 <br>
                             </div>
                             <div id="ingredientDetails" class="overlay">
-                                <a href="javascript:void(0)" class="closebtn" v-on:click="closeDetails()">&times;</a>
+                                <a href="javascript:void(0)" class="closebutton" v-on:click="closeDetails()">&times;</a>
                                 <div class="overlay-content">
                                     <edit_ingredient :ingredient="ingredient"></edit_ingredient>
                                 </div>
@@ -45,7 +45,7 @@
 </template>
 
 <script>
-import _ from 'lodash';
+import _ from 'lodash'; // lodash lib
 export default {
     name: "SearchIngredientComponent",
     props: ['title'],
@@ -94,7 +94,7 @@ export default {
             console.log("Recipe ID of ingredient" + this.ingredient.recipeId);
         },
         closeDetails() {
-            document.getElementById("ingredientDetails").style.width = "0%";
+            document.getElementById("ingredientDetails").style.width = "10%";
         }
     }
 }
@@ -106,42 +106,44 @@ tr:hover {
 }
 
 .overlay {
-    height: 100%;
+    transition: 0.5s;
+    overflow-x: hidden;
+    background-color: white;
+    height: 90%;
     width: 0;
     position: fixed;
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: white;
-    overflow-x: hidden;
-    transition: 0.5s;
+    
+    
 }
 
 .overlay-content {
     position: relative;
-    top: 25%;
+    top: 30%;
     width: 100%;
     text-align: center;
     margin-top: 30px;
 }
 
 .overlay a {
-    padding: 8px;
-    text-decoration: none;
-    font-size: 36px;
-    color: #818181;
     display: block;
+    text-decoration: none;
+    font-size: 35px;
+    padding: 10px;
     transition: 0.3s;
+    color: #818181;
 }
 
 .overlay a:hover, .overlay a:focus {
     color: #f1f1f1;
 }
 
-.overlay .closebtn {
+.overlay .closebutton {
+    top: 18px;
+    right: 40px;
+    font-size: 55px;
     position: absolute;
-    top: 20px;
-    right: 45px;
-    font-size: 60px;
 }
 </style>
