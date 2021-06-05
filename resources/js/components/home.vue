@@ -3,8 +3,8 @@
         <h1>  Peruvian Recipe  </h1>
         <h2>
             Jasmin Dobler<br>
+	    Andi Graf<br>
             Emre Pacariz<br>
-            Andi Graf<br>
             Phillip Stibl
         </h2>
     </div>
