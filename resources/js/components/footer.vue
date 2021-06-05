@@ -2,8 +2,8 @@
     <footer>
         <div class="text">
             <a href="http://127.0.0.1:8000/home">Home</a>
+	    <a href="http://127.0.0.1:8000/recipe">Recipes</a>
             <a href="http://127.0.0.1:8000/ingredient">Ingredients</a>
-            <a href="http://127.0.0.1:8000/recipe">Recipes</a>
         </div>
         <div>
             <p style="text-align: center">{{ new Date().getFullYear() }} — <strong>Peruvian Recipe</strong></p>
