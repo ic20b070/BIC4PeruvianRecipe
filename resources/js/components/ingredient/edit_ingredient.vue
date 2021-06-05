@@ -18,12 +18,21 @@
                 <button class="block">Submit</button>
             </form>
         </div>
+    <div class="card-content" style="display: none;" >
+        <pre class="my-pre">
+                    <p style="font-size:30px; color:#829247; font-weight: bold; text-align:center;">PREVIEW</p>
+                    <p style="font-size:25px; text-align:center; font-weight: bold">{{form.name = ingredient.name}}</p>
+                    <p style="font-size:25px; text-align:center; font-weight: bold">{{form.slug = ingredient.slug}}</p>
+                                        <p style="font-size:21px; max-width: 30em">{{form.description = ingredient.description}}</p>
+                    <p style="font-size:19px; text-align:center; font-weight: bold">Recipe ID: {{form.recipe_id = ingredient.recipeId}}</p>
+                </pre>
+    </div>
     </div>
 </template>
 
 <script>
 let form = new Form({
-    //'slug':'',
+    'slug':'',
     'name':'',
     'description':'',
     'recipe_id':''
@@ -53,7 +62,7 @@ export default {
     },
     methods:{
         submit() {
-            this.url='/ingredient/' //+ form.slug;
+            this.url='/ingredient/' + form.slug;
             console.log(form.name + " " + form.description + " " + form.recipe_id)
             console.log(this.url);
             this.form

@@ -24,6 +24,10 @@ Route::resource('recipe', 'RecipeController');
 
 Route::get('/search/ingredient', 'IngredientController@search')->name('ingredient.search');
 Route::post('/search/ingredient', 'IngredientController@query')->name('ingredient.query');
+//Route::put('/ingredient','IngredientController@update')->name('ingredient.update');
+
 
 Route::get('/list/recipe', 'RecipeController@list')->name('recipe.list');
 Route::get('/list/ingredient', 'IngredientController@list')->name('ingredient.list');
+
+
