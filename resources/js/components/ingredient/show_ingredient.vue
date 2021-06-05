@@ -171,13 +171,13 @@ export default {
     top: 25%;
     width: 100%;
     text-align: center;
-    margin-top: 30px;
+    margin-top: 25px;
 }
 
 .overlay a {
-    padding: 8px;
+    padding: 6px;
     text-decoration: none;
-    font-size: 36px;
+    font-size: 34px;
     color: #818181;
     display: block;
     transition: 0.3s;
@@ -189,8 +189,8 @@ export default {
 
 .overlay .closebtn {
     position: absolute;
-    top: 20px;
-    right: 45px;
-    font-size: 60px;
+    top: 18px;
+    right: 40px;
+    font-size: 58px;
 }
 </style>
