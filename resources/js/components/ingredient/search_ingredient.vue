@@ -67,7 +67,7 @@ export default {
                 description: '',
                 creationDate: '',
                 quantity: '',
-                //slug: '',
+                slug: '',
                 recipeId: '',
                 updateDate: ''
             }
@@ -94,7 +94,7 @@ export default {
             this.ingredient.description = result.description;
             this.ingredient.creationDate = result.created_at;
             this.ingredient.quantity = result.quantity;
-            //this.ingredient.slug = result.slug;
+            this.ingredient.slug = result.slug;
             this.ingredient.recipeId = result.recipe_id;
             this.ingredient.updateDate = result.updated_at;
             console.log(this.ingredient.name);

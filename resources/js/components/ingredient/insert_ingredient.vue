@@ -53,7 +53,7 @@
 <script>
 let form = new Form({
     'id':'',
-    //'slug':'',
+    'slug':'',
     'name':'',
     'description':'',
     'unit':'',

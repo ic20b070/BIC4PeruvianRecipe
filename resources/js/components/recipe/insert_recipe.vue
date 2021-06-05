@@ -33,7 +33,7 @@ let rform =new Form({
     'id':'',
     'name':'',
     'description':'',
-   // 'slug':'',
+    'slug':'',
 });
 export default {
     name: "insert_recipe.vue",

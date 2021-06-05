@@ -19,7 +19,7 @@
 
 <script>
 let form = new Form({
-    //'slug':'',
+    'slug':'',
     'name':'',
     'description':'',
     'recipe_id':''
@@ -41,7 +41,7 @@ export default {
     },
     methods:{
         submit() {
-            this.url='/recipe/' //+ form.slug;
+            this.url='/recipe/' + form.slug;
             console.log(form.name + " " + form.description);
             console.log(this.url);
             this.form

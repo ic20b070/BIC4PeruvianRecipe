@@ -15,6 +15,9 @@
                 <tr class ="hover" v-on:click="openRecipeDetails(recipe)">
                     <th v-bind:id="recipe.id">{{recipe.id}}</th>
                     <th>{{recipe.description}}</th>
+                    <th>
+                        <button style = "background: #FF5100FF" type="button" v-on:click.stop.prevent="deleteRecipe(recipe)">Remove</button>
+                    </th>
                 </tr>
                 </tbody>
             </table>
@@ -30,7 +33,7 @@
                         <th>Description</th>
                         <th>Unit</th>
                         <th width="10%">Quantity</th>
-                        <!-- <th>slug</th> />-->
+                        <th>slug</th>
                         <th width="10%">Recipe ID</th>
                     </tr>
                     </thead>
@@ -41,7 +44,7 @@
                         <th>{{ingredient.description}}</th>
                         <th>{{ingredient.unit}}</th>
                         <th>{{ingredient.quantity}}</th>
-                        <!-- <th>{{ingredient.slug}}</th> />-->
+                        <th>{{ingredient.slug}}</th>
                         <th>{{ingredient.recipe_id}}</th>
                     </tr>
                     </tbody>
@@ -58,6 +61,11 @@
 </template>
 
 <script>
+let form = new Form({
+    'slug':'',
+    'name':'',
+    'recipe_id':''
+});
 import EditRecipe from "./edit_recipe";
 export default {
     name: "show_recipe.vue",
@@ -66,8 +74,10 @@ export default {
         return{
             recipes:[],
             ingredients:[],
+            form:form,
+            url:'',
             recipe: {
-             //   slug: '',
+             slug: '',
                 description: '',
                 name: ''
             }
@@ -103,7 +113,7 @@ export default {
             document.getElementById("recipeDetails").style.width = "100%";
             console.log("RECIPE DETAILS TEST");
             console.log(recipe);
-            //this.recipe.slug = recipe.slug;
+            this.recipe.slug = recipe.slug;
             this.recipe.name = recipe.name;
             this.recipe.description = recipe.description;
         },
@@ -115,6 +125,32 @@ export default {
             axios.get('./list/ingredient')
                 .then(response => this.ingredients = response.data)
                 .catch(e => console.log(e));
+        },
+        deleteRecipe(recipe){
+            this.form.slug = recipe.slug;
+            this.form.name = recipe.name;
+            this.form.id = recipe.id;
+            this.url='/recipe/' + form.slug;
+            //console.log(form.name + " " + form.description + " " + form.recipe_id)
+            console.log(this.url);
+
+            this.form
+                .delete(this.url)
+                .then((response)=>{
+                    console.log(response);
+                })
+                .catch((error)=>{
+                    console.log("Errormessage:");
+                    console.log(this.form.failMessage);
+                });
+
+            axios.get('./list/recipe')
+                .then(response => this.recipes = response.data)
+                .catch(e => console.log(e));
+            axios.get('./list/ingredient')
+                .then(response => this.ingredients = response.data)
+                .catch(e => console.log(e));
+
         }
     }
 }

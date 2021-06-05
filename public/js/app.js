@@ -2064,8 +2064,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var form = new Form({
-  //'slug':'',
+  'slug': '',
   'name': '',
   'description': '',
   'recipe_id': ''
@@ -2099,8 +2108,7 @@ var form = new Form({
     submit: function submit() {
       var _this2 = this;
 
-      this.url = '/ingredient/'; //+ form.slug;
-
+      this.url = '/ingredient/' + form.slug;
       console.log(form.name + " " + form.description + " " + form.recipe_id);
       console.log(this.url);
       this.form.put(this.url).then(function (response) {
@@ -2178,7 +2186,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 var form = new Form({
   'id': '',
-  //'slug':'',
+  'slug': '',
   'name': '',
   'description': '',
   'unit': '',
@@ -2305,7 +2313,7 @@ __webpack_require__.r(__webpack_exports__);
         description: '',
         creationDate: '',
         quantity: '',
-        //slug: '',
+        slug: '',
         recipeId: '',
         updateDate: ''
       }
@@ -2335,8 +2343,8 @@ __webpack_require__.r(__webpack_exports__);
       this.ingredient.id = result.id;
       this.ingredient.description = result.description;
       this.ingredient.creationDate = result.created_at;
-      this.ingredient.quantity = result.quantity; //this.ingredient.slug = result.slug;
-
+      this.ingredient.quantity = result.quantity;
+      this.ingredient.slug = result.slug;
       this.ingredient.recipeId = result.recipe_id;
       this.ingredient.updateDate = result.updated_at;
       console.log(this.ingredient.name);
@@ -2394,6 +2402,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+var form = new Form({
+  'slug': '',
+  'name': '',
+  'id': ''
+});
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "show_ingredient",
   data: function data() {
@@ -2406,11 +2423,13 @@ __webpack_require__.r(__webpack_exports__);
         description: '',
         creationDate: '',
         quantity: '',
-        //slug: '',
+        slug: '',
         recipeId: '',
         updateDate: ''
       },
-      loading: false
+      loading: false,
+      form: form,
+      url: ''
     };
   },
   created: function created() {
@@ -2439,8 +2458,8 @@ __webpack_require__.r(__webpack_exports__);
       this.ingredient.id = value.id;
       this.ingredient.description = value.description;
       this.ingredient.creationDate = value.created_at;
-      this.ingredient.quantity = value.quantity; //this.ingredient.slug = value.slug;
-
+      this.ingredient.quantity = value.quantity;
+      this.ingredient.slug = value.slug;
       this.ingredient.recipeId = value.recipe_id;
       this.ingredient.updateDate = value.updated_at;
       console.log(this.ingredient.name);
@@ -2458,6 +2477,36 @@ __webpack_require__.r(__webpack_exports__);
     openRecipeList: function openRecipeList(receptReference) {
       this.ingredient.recipeId = receptReference;
       window.location = './recipe#' + this.ingredient.recipeId;
+    },
+    deleteIngredient: function deleteIngredient(ingredient) {
+      var _this3 = this;
+
+      this.form.slug = ingredient.slug;
+      this.form.name = ingredient.name;
+      this.form.id = ingredient.id;
+      this.url = '/ingredient/' + form.slug; //console.log(form.name + " " + form.description + " " + form.recipe_id)
+
+      console.log(this.url);
+      this.form["delete"](this.url).then(function (response) {
+        console.log(response);
+      })["catch"](function (error) {
+        console.log("Errormessage:");
+        console.log(_this3.form.failMessage);
+      });
+      this.loading = true;
+      console.log("Component show_ingredient loaded");
+      axios.get('./list/ingredient').then(function (response) {
+        _this3.ingredients = response.data;
+      })["catch"](function (e) {
+        return console.log(e);
+      });
+      axios.get('./list/recipe').then(function (response) {
+        _this3.recipes = response.data;
+        _this3.loading = false;
+      })["catch"](function (e) {
+        return console.log(e);
+      });
+      this.loading = true;
     }
   }
 });
@@ -2493,7 +2542,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 var form = new Form({
-  //'slug':'',
+  'slug': '',
   'name': '',
   'description': '',
   'recipe_id': ''
@@ -2517,8 +2566,7 @@ var form = new Form({
     submit: function submit() {
       var _this = this;
 
-      this.url = '/recipe/'; //+ form.slug;
-
+      this.url = '/recipe/' + form.slug;
       console.log(form.name + " " + form.description);
       console.log(this.url);
       this.form.put(this.url).then(function (response) {
@@ -2575,8 +2623,8 @@ __webpack_require__.r(__webpack_exports__);
 var rform = new Form({
   'id': '',
   'name': '',
-  'description': '' // 'slug':'',
-
+  'description': '',
+  'slug': ''
 });
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "insert_recipe.vue",
@@ -2682,6 +2730,14 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 //
 //
 //
+//
+//
+//
+var form = new Form({
+  'slug': '',
+  'name': '',
+  'recipe_id': ''
+});
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "show_recipe.vue",
@@ -2692,8 +2748,10 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     return {
       recipes: [],
       ingredients: [],
+      form: form,
+      url: '',
       recipe: {
-        //   slug: '',
+        slug: '',
         description: '',
         name: ''
       }
@@ -2737,8 +2795,8 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     openRecipeDetails: function openRecipeDetails(recipe) {
       document.getElementById("recipeDetails").style.width = "100%";
       console.log("RECIPE DETAILS TEST");
-      console.log(recipe); //this.recipe.slug = recipe.slug;
-
+      console.log(recipe);
+      this.recipe.slug = recipe.slug;
       this.recipe.name = recipe.name;
       this.recipe.description = recipe.description;
     },
@@ -2753,6 +2811,32 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       });
       axios.get('./list/ingredient').then(function (response) {
         return _this2.ingredients = response.data;
+      })["catch"](function (e) {
+        return console.log(e);
+      });
+    },
+    deleteRecipe: function deleteRecipe(recipe) {
+      var _this3 = this;
+
+      this.form.slug = recipe.slug;
+      this.form.name = recipe.name;
+      this.form.id = recipe.id;
+      this.url = '/recipe/' + form.slug; //console.log(form.name + " " + form.description + " " + form.recipe_id)
+
+      console.log(this.url);
+      this.form["delete"](this.url).then(function (response) {
+        console.log(response);
+      })["catch"](function (error) {
+        console.log("Errormessage:");
+        console.log(_this3.form.failMessage);
+      });
+      axios.get('./list/recipe').then(function (response) {
+        return _this3.recipes = response.data;
+      })["catch"](function (e) {
+        return console.log(e);
+      });
+      axios.get('./list/ingredient').then(function (response) {
+        return _this3.ingredients = response.data;
       })["catch"](function (e) {
         return console.log(e);
       });
@@ -21823,6 +21907,80 @@ var render = function() {
           ]
         )
       ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "card-content", staticStyle: { display: "none" } },
+      [
+        _c("pre", { staticClass: "my-pre" }, [
+          _vm._v("                "),
+          _c(
+            "p",
+            {
+              staticStyle: {
+                "font-size": "30px",
+                color: "#829247",
+                "font-weight": "bold",
+                "text-align": "center"
+              }
+            },
+            [_vm._v("PREVIEW")]
+          ),
+          _vm._v("\n                "),
+          _c(
+            "p",
+            {
+              staticStyle: {
+                "font-size": "25px",
+                "text-align": "center",
+                "font-weight": "bold"
+              }
+            },
+            [_vm._v(_vm._s((_vm.form.name = _vm.ingredient.name)))]
+          ),
+          _vm._v("\n                "),
+          _c(
+            "p",
+            {
+              staticStyle: {
+                "font-size": "25px",
+                "text-align": "center",
+                "font-weight": "bold"
+              }
+            },
+            [_vm._v(_vm._s((_vm.form.slug = _vm.ingredient.slug)))]
+          ),
+          _vm._v("\n                                    "),
+          _c(
+            "p",
+            { staticStyle: { "font-size": "21px", "max-width": "30em" } },
+            [
+              _vm._v(
+                _vm._s((_vm.form.description = _vm.ingredient.description))
+              )
+            ]
+          ),
+          _vm._v("\n                "),
+          _c(
+            "p",
+            {
+              staticStyle: {
+                "font-size": "19px",
+                "text-align": "center",
+                "font-weight": "bold"
+              }
+            },
+            [
+              _vm._v(
+                "Recipe ID: " +
+                  _vm._s((_vm.form.recipe_id = _vm.ingredient.recipeId))
+              )
+            ]
+          ),
+          _vm._v("\n            ")
+        ])
+      ]
     )
   ])
 }
@@ -22301,7 +22459,6 @@ var render = function() {
                     _c(
                       "button",
                       {
-                        staticClass: "card-header-title",
                         staticStyle: { background: "#FF5100FF" },
                         attrs: { type: "button" },
                         on: {
@@ -22319,7 +22476,25 @@ var render = function() {
                       ]
                     )
                   ])
-                : _vm._e()
+                : _vm._e(),
+              _vm._v(" "),
+              _c("th", [
+                _c(
+                  "button",
+                  {
+                    staticStyle: { background: "#FF5100FF" },
+                    attrs: { type: "button" },
+                    on: {
+                      click: function($event) {
+                        $event.stopPropagation()
+                        $event.preventDefault()
+                        return _vm.deleteIngredient(ingredient)
+                      }
+                    }
+                  },
+                  [_vm._v("Remove")]
+                )
+              ])
             ]
           )
         }),
@@ -22368,7 +22543,9 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", { attrs: { width: "6%" } }, [_vm._v("Quantity")]),
         _vm._v(" "),
-        _c("th", { attrs: { width: "6%" } }, [_vm._v("Recipe Name")])
+        _c("th", { attrs: { width: "6%" } }, [_vm._v("Recipe Name")]),
+        _vm._v(" "),
+        _c("th", { attrs: { width: "6%" } }, [_vm._v("Delete")])
       ])
     ])
   }
@@ -22678,7 +22855,25 @@ var render = function() {
                     _vm._v(_vm._s(recipe.id))
                   ]),
                   _vm._v(" "),
-                  _c("th", [_vm._v(_vm._s(recipe.description))])
+                  _c("th", [_vm._v(_vm._s(recipe.description))]),
+                  _vm._v(" "),
+                  _c("th", [
+                    _c(
+                      "button",
+                      {
+                        staticStyle: { background: "#FF5100FF" },
+                        attrs: { type: "button" },
+                        on: {
+                          click: function($event) {
+                            $event.stopPropagation()
+                            $event.preventDefault()
+                            return _vm.deleteRecipe(recipe)
+                          }
+                        }
+                      },
+                      [_vm._v("Remove")]
+                    )
+                  ])
                 ]
               )
             ])
@@ -22708,6 +22903,8 @@ var render = function() {
                       _c("th", [_vm._v(_vm._s(ingredient.unit))]),
                       _vm._v(" "),
                       _c("th", [_vm._v(_vm._s(ingredient.quantity))]),
+                      _vm._v(" "),
+                      _c("th", [_vm._v(_vm._s(ingredient.slug))]),
                       _vm._v(" "),
                       _c("th", [_vm._v(_vm._s(ingredient.recipe_id))])
                     ]
@@ -22774,6 +22971,8 @@ var staticRenderFns = [
         _c("th", [_vm._v("Unit")]),
         _vm._v(" "),
         _c("th", { attrs: { width: "10%" } }, [_vm._v("Quantity")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("slug")]),
         _vm._v(" "),
         _c("th", { attrs: { width: "10%" } }, [_vm._v("Recipe ID")])
       ])
@@ -36213,8 +36412,8 @@ var Form = /*#__PURE__*/function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Emre\PhpstormProjects\BIC4PeruvianRecipe\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Emre\PhpstormProjects\BIC4PeruvianRecipe\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\phill\PhpstormProjects\BIC4PeruvianRecipe\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\phill\PhpstormProjects\BIC4PeruvianRecipe\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

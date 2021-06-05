@@ -23,7 +23,7 @@
                     <button style = "background: #FF5100FF" type="button" v-on:click.stop.prevent="openRecipeList(ingredient.recipe_id)">{{recipes[ingredient.recipe_id-1].name}}</button>
                 </th>
                 <th>
-                    <button style = "background: #FF5100FF" type="button" v-on:click.stop.prevent="deleteIngredient(ingredient.id)">Remove</button>
+                    <button style = "background: #FF5100FF" type="button" v-on:click.stop.prevent="deleteIngredient(ingredient)">Remove</button>
                 </th>
             </tr>
             </tbody>
@@ -38,6 +38,11 @@
 </template>
 
 <script>
+let form = new Form({
+    'slug':'',
+    'name':'',
+    'id':''
+});
 export default {
     name: "show_ingredient",
     data(){
@@ -54,7 +59,9 @@ export default {
                 recipeId: '',
                 updateDate: ''
             },
-            loading: false
+            loading: false,
+            form:form,
+            url: ''
         }
     },
     created() {
@@ -97,9 +104,41 @@ export default {
             this.ingredient.recipeId = receptReference
             window.location = './recipe#'+this.ingredient.recipeId;
         },
-        deleteIngredient(id) {
-            this.axios.delete("http://127.0.0.1:8000/ingredient" + id)
+        deleteIngredient(ingredient) {
+            this.form.slug = ingredient.slug;
+            this.form.name = ingredient.name;
+            this.form.id = ingredient.id;
+            this.url='/ingredient/' + form.slug;
+            //console.log(form.name + " " + form.description + " " + form.recipe_id)
+            console.log(this.url);
+
+            this.form
+                .delete(this.url)
+                .then((response)=>{
+                    console.log(response);
+                })
+                .catch((error)=>{
+                    console.log("Errormessage:");
+                    console.log(this.form.failMessage);
+                });
+
+           this.loading = true;
+            console.log("Component show_ingredient loaded");
+            axios.get('./list/ingredient')
+                .then(response => {
+                    this.ingredients = response.data;
+                })
                 .catch(e => console.log(e));
+            axios.get('./list/recipe')
+                .then(response => {
+                    this.recipes = response.data;
+                    this.loading = false;
+                })
+                .catch(e => console.log(e));
+            this.loading = true;
+
+
+
         }
 
     }
