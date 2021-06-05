@@ -34,19 +34,7 @@
                 <button class="block">Submit</button>
             </form>
         </div>
-        <!--<div class="card-footer">
-            <div class="card-footer-item" style="background-color: #f6f8ed">
-            <pre class="my-pre">
-                <a style="font-size:30px; color:#FF5100FF; font-weight: bold; text-align:center;">PREVIEW</a>
-                <a style="font-size:18px; text-align:center; font-weight: bold">{{form.name}}</a>
-                <a style="font-size:16px; max-width: 30em">{{form.description}}</a>
-                <a style="font-weight:bold"> Quantity: {{form.quantity}}</a>
-                <a style="font-weight:bold"> Unit: {{form.unit}}</a>
-                <a style="font-weight:bold"> For recipe: {{form.recipe_id}}</a>
-                <a>{{form.id}}</a>
-            </pre>
-            </div>
-            </div> />-->
+
         </div>
 </template>
 

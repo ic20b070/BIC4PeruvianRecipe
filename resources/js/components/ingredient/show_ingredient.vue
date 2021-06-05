@@ -8,21 +8,18 @@
                 <th>Description</th>
                 <th>Unit</th>
                 <th width="6%">Quantity</th>
-                <th width="6%">Recipe Name</th>
+
                 <th width="6%">Delete</th>
             </tr>
             </thead>
             <tbody>
-            <tr v-on:load="mapRecipeIdToName(12)" class="hover" v-for="ingredient in ingredients" :key="ingredient.id" v-on:click.stop.prevent="openIngredientDetails(ingredient)">
+            <tr class="hover" v-for="ingredient in ingredients" :key="ingredient.id" v-on:click.stop.prevent="openIngredientDetails(ingredient)">
                 <th>{{ingredient.id}}</th>
                 <th>{{ingredient.name}}</th>
                 <th width="1000px">{{ingredient.description}}</th>
                 <th>{{ingredient.unit}}</th>
                 <th>{{ingredient.quantity}}</th>
                 <th v-if="!loading">
-                    <button style = "background: #FF5100FF" type="button" v-on:click.stop.prevent="openRecipeList(ingredient.recipe_id)">{{recipes[ingredient.recipe_id-1].name}}</button>
-                </th>
-                <th>
                     <button style = "background: #FF5100FF" type="button" v-on:click.stop.prevent="deleteIngredient(ingredient)">Remove</button>
                 </th>
             </tr>
@@ -67,9 +64,11 @@ export default {
     created() {
         this.loading = true;
         console.log("Component show_ingredient loaded");
+
         axios.get('./list/ingredient')
             .then(response => {
                 this.ingredients = response.data;
+
             })
             .catch(e => console.log(e));
         axios.get('./list/recipe')
@@ -78,6 +77,7 @@ export default {
                 this.loading = false;
             })
             .catch(e => console.log(e));
+
         this.loading = true;
     },
     methods: {

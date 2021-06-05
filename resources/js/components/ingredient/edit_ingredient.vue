@@ -10,7 +10,6 @@
                 <strong> Description: </strong> <br>
                 <textarea style="height:50px;width:650px; font-size:15px; background-color:#ffffff" cols="90" v-model="ingredient.description"/> <br> <br>
                 <strong> For Recipe: </strong> <br>
-                <!---<input type="number" style="height:35px;width:40px; font-size:18px; background-color:#f1f6f2" class="form-control" v-model="ingredient.recipeId"/>-->
                 <select style="font-size:15px" class="form-control" v-model="ingredient.recipeId"> <br>
                     <option v-for="recipe in recipes" :key="recipe.id" v-bind:value="recipe.id">{{recipe.name}}</option>
                 </select>
@@ -74,6 +73,7 @@ export default {
                     console.log("Errormessage:");
                     console.log(this.form.failMessage);
                 });
+
         }
     }
 
