@@ -1,30 +1,18 @@
 <template>
     <div class="card">
         <div class="card-header">
-            <h1 class="card-header-title is-centered"  >New Recipe</h1>
+            <h1 class="card-header-title is-centered">New Recipe</h1>
         </div>
         <div class="card-content">
             <form v-model="rform" @submit.prevent="submitting">
-                <strong>Name:</strong>
-                <br>
-                <input type="text" class="form-control" style="font-size:20px" v-model="rform.name">
-                <br><br>
-                <strong>Description:</strong>
-                <br>
-                <textarea class="form-control" style="height:70px;width:450px; font-size:18px" cols="90" v-model="rform.description"></textarea>
-                <hr>
+                <strong>Name:</strong><br>
+                <input type="text" class="form-control" style="font-size:20px" v-model="rform.name"><br><br>
+                <strong>Description:</strong><br>
+                <textarea class="form-control" style="height:70px;width:450px; font-size:18px" cols="90" v-model="rform.description"></textarea><hr>
                 <button class="block">Submit</button>
             </form>
         </div>
-        <!-- <div class="card-footer">
-            <div class="card-footer-item" style="background-color:#f6f8ed">
-                <pre>
-                    <p style="font-size:30px; color:#00b89c; font-weight: bold; text-align:center;"> PREVIEW</p>
-                    <p style="font-size:18px; text-align:center; font-weight: bold">{{rform.name}}</p>
-                    <p style="font-size:16px">{{rform.description}}</p>
-                </pre>
-            </div>
-        </div> />-->
+        
     </div>
 </template>
 
@@ -67,7 +55,6 @@ export default {
     }
 }
 </script>
-
 <style scoped>
 .block {
     display: block;
