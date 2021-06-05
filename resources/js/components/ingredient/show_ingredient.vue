@@ -122,7 +122,7 @@ export default {
                     console.log(this.form.failMessage);
                 });
 
-            this.loading = true;
+           this.loading = true;
             console.log("Component show_ingredient loaded");
             axios.get('./list/ingredient')
                 .then(response => {
@@ -136,6 +136,9 @@ export default {
                 })
                 .catch(e => console.log(e));
             this.loading = true;
+
+
+
         }
 
     }

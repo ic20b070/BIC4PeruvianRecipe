@@ -29,5 +29,5 @@ Route::post('/search/ingredient', 'IngredientController@query')->name('ingredien
 
 Route::get('/list/recipe', 'RecipeController@list')->name('recipe.list');
 Route::get('/list/ingredient', 'IngredientController@list')->name('ingredient.list');
-
+Route::delete('/list/ingredient', 'IngredientController@destroy')->name('ingredient.destroy');
 
