@@ -26,6 +26,7 @@
 	</div>
 	</div>
 </template>
+
 <script>
 let form = new Form({
     'slug':'',
@@ -76,6 +77,7 @@ export default {
 
 }
 </script>
+
 <style scoped>
     .block {
         display: block;
