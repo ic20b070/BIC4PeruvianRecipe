@@ -142,7 +142,7 @@
 
     <footer class="footer">
         <div class="content has-text-centered">
-            <small>Peruvian Recipe<br>©FH Technikum Gruppe<br>(Jasmin Dobler, Emre Pacariz, Andi Graf, Phillip Stibl)</small>
+            <small>Here comes some footer</small>
         </div>
     </footer>
 </div>

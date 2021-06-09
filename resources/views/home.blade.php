@@ -1,21 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="section is-fixed-top-touch">
-        <home title="Dashboard">
-            @if (session('status'))
-                <query-message :success="true" :fail="false" message="{{ session('status') }}"></query-message>
-            @endif
-
-        </home>
-    </section>
-    <section class="section is-fixed-bottom">
+    <section class="section is-fullheight">
         <example-component title="Dashboard">
-            <h1 class="has-text-centered">Welcome to the Peruvian Recipe Cookbook!</h1>
             @if (session('status'))
                 <query-message :success="true" :fail="false" message="{{ session('status') }}"></query-message>
             @endif
-            <h2 class="has-text-centered"><strong>{{ auth()->user()->name }}</strong></h2>
+            <p>Welcome <strong>{{ auth()->user()->name }}</strong></p>
         </example-component>
     </section>
 @endsection

@@ -22,17 +22,7 @@ window.Vue = vue;
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('query-message', require('./components/base/QueryMessage.vue').default);
-Vue.component('home', require('./components/home.vue').default);
-Vue.component('footer', require('./components/footer.vue').default);
 
-Vue.component('edit_ingredient', require('./components/ingredient/edit_ingredient.vue').default);
-Vue.component('insert_ingredient', require('./components/ingredient/insert_ingredient.vue').default);
-Vue.component('search_ingredient', require('./components/ingredient/search_ingredient.vue').default);
-Vue.component('show_ingredient', require('./components/ingredient/show_ingredient.vue').default);
-
-Vue.component('insert_recipe', require('./components/recipe/insert_recipe').default);
-Vue.component('show_recipe', require('./components/recipe/show_recipe').default);
-Vue.component('edit_recipe', require('./components/recipe/edit_recipe').default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

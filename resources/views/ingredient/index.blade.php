@@ -3,11 +3,8 @@
 
 @section('content')
     <section class="section">
-        <body>
-        <div id="app">
-            <show_ingredient></show_ingredient>
+        <div class="container">
+            <h1>List ingredient</h1>
         </div>
-        </body>
     </section>
-
 @endsection

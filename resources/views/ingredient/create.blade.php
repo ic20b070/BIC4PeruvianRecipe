@@ -4,8 +4,7 @@
 @section('content')
     <section class="section">
         <div class="container">
-            <insert_ingredient></insert_ingredient>
+            <h1>Create ingredient</h1>
         </div>
     </section>
-    </body>
 @endsection
