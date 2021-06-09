@@ -7,9 +7,8 @@
                 <th>Name</th>
                 <th>Description</th>
                 <th>Unit</th>
-                <th width="6%">Quantity</th>
-
-                <th width="6%">Delete</th>
+                <th width="10%">Quantity</th>
+                <th width="10%">Delete</th>
             </tr>
             </thead>
             <tbody>
@@ -23,6 +22,7 @@
                     <button style = "background: #FF5100FF" type="button" v-on:click.stop.prevent="deleteIngredient(ingredient)">Remove</button>
                 </th>
             </tr>
+
             </tbody>
         </table>
         <div id="ingredientDetails" class="overlay">
